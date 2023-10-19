@@ -1,0 +1,30 @@
+<!-- <div class="app">
+  <h1>Folder Structure Maker</h1>
+  <button *ngIf="isAddRootFolderVisible" (click)="addFolderToRoot()">Add Folder to Root</button>
+  <div *ngFor="let child of rootNode.children">
+    <app-folder *ngIf="child.type === 'folder'" [node]="child"></app-folder>
+    <app-file *ngIf="child.type === 'file'" [node]="child"></app-file>
+  </div>
+</div> -->
+<!-- <div class="app">
+  <h1>Folder Structure Maker</h1>
+  <button (click)="addChild(rootNode, 'folder')">Add Folder to Root</button>
+  <div *ngFor="let child of rootNode.children">
+    <div *ngIf="child.type === 'folder'">
+      <button (click)="addChild(child, 'folder')">Add Folder</button>
+    </div>
+    <div *ngIf="child.type === 'file'">
+      <button (click)="addChild(child, 'file')">Add File</button>
+    </div>
+    {{ child.name }}
+  </div>
+</div> -->
+<div>
+  <h1>Folder Structure Maker</h1>
+  <button (click)="addFolderToRoot()">Add Folder to Root</button>
+  <app-folder [node]="rootNode"></app-folder>
+  <!-- <app-file *ngFor="let file of rootNode.children; let i = index" [node]="file" (delete)="onDeleteNode(i)"></app-file> -->
+  <app-file *ngFor="let file of rootNode.children; " [node]="file" (delete)="onDeleteNode($event)"></app-file>
+
+
+</div>

@@ -1,0 +1,23 @@
+<div class="icon">
+  <app-svg-icon [src]="'assets/folder-open-regular.svg'"></app-svg-icon>
+</div>
+<span>{{ node.name }}</span>
+<button (click)="toggleAddingChild()">{{ addingChild ? '-' : '+' }}</button>
+<button *ngIf="node.type === 'folder'" (click)="removeNode()"> X
+  <!-- <app-svg-icon [src]="'assets/icons/bin-icon.svg'"></app-svg-icon> -->
+</button>
+
+<div *ngIf="addingChild">
+  <input type="text" [(ngModel)]="childName" placeholder="Enter name">
+  <button (click)="addChild('file')">Add File</button>
+  <button (click)="addChild('folder')">Add Folder</button>
+</div>
+
+<div *ngIf="node.children && node.children.length > 0">
+  <ul>
+    <li *ngFor="let child of node.children">
+      <app-folder *ngIf="child.type === 'folder'" [node]="child"></app-folder>
+      <app-file *ngIf="child.type === 'file'" [node]="child"></app-file>
+    </li>
+  </ul>
+</div>
